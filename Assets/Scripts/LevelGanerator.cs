@@ -47,6 +47,7 @@ public class LevelGanerator : MonoBehaviour
                     if ((j % 2) == 0 && j > 0)
                     {
                         GameObject obj = Instantiate( prefab);
+                        obj.transform.SetParent(gameObject.transform);
                         obj.transform.position = new Vector3(i, 0.5f, j);
                     }
                 }
@@ -56,6 +57,7 @@ public class LevelGanerator : MonoBehaviour
     void FloorInitializer(int size, GameObject prefab)
     {
         GameObject obj = Instantiate(prefab);
+        obj.transform.SetParent(gameObject.transform);
         obj.transform.localScale = new Vector3( (size / 4) + 0.5f, 1, (size / 4) + 0.5f);
         obj.transform.position = new Vector3(size + 1, 0, size + 1);
     }
@@ -71,14 +73,10 @@ public class LevelGanerator : MonoBehaviour
                 x = Random.Range(1, (size *2 ) + 1);
                 z = Random.Range(1, (size *2) + 1);
             } while (x % 2 == 0 && z %2==0);
-
             GameObject obj = Instantiate(prefab);
+            obj.transform.SetParent(gameObject.transform);
             obj.transform.position = new Vector3(x, 0.5f, z);
             
         }
-
-        
-        
-        
     }
 }
