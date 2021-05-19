@@ -70,8 +70,8 @@ public class LevelGenerator : MonoBehaviour
         {
             do
             {
-                x = Random.Range(1, (size *2 ) + 1);
-                z = Random.Range(1, (size *2) + 1);
+                x = Random.Range(2, (size *2 ) + 1);
+                z = Random.Range(2, (size *2) + 1);
             } while (x % 2 == 0 && z %2==0);
             GameObject obj = Instantiate(prefab);
             obj.transform.SetParent(gameObject.transform);
