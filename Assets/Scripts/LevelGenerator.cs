@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelGanerator : MonoBehaviour
+public class LevelGenerator : MonoBehaviour
 {
     [System.Serializable]
     public class Pool
