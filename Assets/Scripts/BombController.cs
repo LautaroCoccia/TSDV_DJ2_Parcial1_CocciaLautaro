@@ -16,7 +16,7 @@ public class BombController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space) && bombsAlive==0)
         {
             bomb = Instantiate(bombPrefab);
-            bomb.transform.position =new Vector3( Mathf.Round( transform.position.x), Mathf.Round(transform.position.y), Mathf.Round(transform.position.z));
+            bomb.transform.position =new Vector3( Mathf.Round( transform.position.x), transform.position.y, Mathf.Round(transform.position.z));
             StartCoroutine(Timer());
             bombsAlive++;
         }
