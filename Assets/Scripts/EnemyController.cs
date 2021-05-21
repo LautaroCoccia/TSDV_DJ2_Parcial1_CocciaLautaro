@@ -1,22 +1,8 @@
 ﻿using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
-    //[SerializeField]
-    //enum State
-    //{
-    //    moving,
-    //    tryTurn,
-    //    turn
-    //}
-
     [SerializeField] private  float movementSpeed = 1;
     [SerializeField] private  float timeToTurn = 3;
-    //State enemyState;
-    // Start is called before the first frame update
-    void Start()
-    {
-        //enemyState = State.moving;
-    }
 
     // Update is called once per frame
     void Update()
@@ -49,7 +35,6 @@ public class EnemyController : MonoBehaviour
                 transform.Rotate(0, 90, 0);
                 transform.position = new Vector3(Mathf.Round(transform.position.x), transform.position.y,
                     Mathf.Round(transform.position.z));
-                Debug.Log("Right");
             }
         }
         else if (turnDirection == 2)
@@ -59,7 +44,6 @@ public class EnemyController : MonoBehaviour
                 transform.Rotate(0, -90, 0);
                 transform.position = new Vector3(Mathf.Round(transform.position.x), transform.position.y,
                     Mathf.Round(transform.position.z));
-                Debug.Log("left");
             }
         }
         timeToTurn = 3;
