@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7901739237112157972}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -140,4 +140,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bombPrefab: {fileID: 5928575042721452454, guid: 348e56c7499db904b8566fd9acf77e74,
     type: 3}
-  TimeToExplote: 2
+  TimeToExplote: 5
+  actualTime: 0
