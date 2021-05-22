@@ -39,7 +39,7 @@ public class LevelGenerator : MonoBehaviour
             }
             else if (pool.tag == "Enemy")
             {
-                BrickWallInitializer(pool.size, pool.prefab);
+                EnemyInitializer(pool.size, pool.prefab);
             }
         }
     }
