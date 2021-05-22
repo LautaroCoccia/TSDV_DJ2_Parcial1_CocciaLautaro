@@ -20,7 +20,15 @@ public class EnemyController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, 0.5f))
         {
-            transform.Rotate(0, 180, 0);
+            if(hit.transform.tag == "Player")
+            {
+                hit.transform.position = new Vector3(1, 0.5f, 1);
+                LevelManager.Get().UpdateHealth();
+            }
+            else
+            {
+                transform.Rotate(0, 180, 0);
+            }
         }
     }
     void RaycastTurn()
