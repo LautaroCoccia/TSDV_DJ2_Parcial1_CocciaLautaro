@@ -139,7 +139,7 @@ public class LevelGenerator : MonoBehaviour
             GameObject obj = Instantiate(prefab);
             obj.transform.SetParent(gameObject.transform);
             obj.transform.position = new Vector3(x, 0.5f, z);
-            Debug.Log(positionsList.Count);
+
         }
     }
 
