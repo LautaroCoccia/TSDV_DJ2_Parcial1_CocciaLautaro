@@ -6,7 +6,6 @@ public class BombController : MonoBehaviour
 {
     [SerializeField] GameObject bombPrefab;
     [SerializeField] float TimeToExplote = 2;
-    [SerializeField] float actualTime = 0;
     int bombsAlive = 0;
     GameObject bomb;
     Vector3 bombPos;
@@ -28,7 +27,7 @@ public class BombController : MonoBehaviour
             {
                 bomb.SetActive(true);
                 StartCoroutine(Timer());
-                ExplotionHit();
+                
 
             }
         }
@@ -38,7 +37,7 @@ public class BombController : MonoBehaviour
         yield return new WaitForSeconds(TimeToExplote);
         
         bombsAlive = 0;
-        actualTime = 0;
+        ExplotionHit();
         Destroy(bomb);
     }
     void ExplotionHit()
@@ -66,6 +65,7 @@ public class BombController : MonoBehaviour
                     LevelManager.Get().UpdateScore(50);
                 Destroy(hit.transform.gameObject);
             }
+            bombPos = Vector3.zero;
         }
         
     }
