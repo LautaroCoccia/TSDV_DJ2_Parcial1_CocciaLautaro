@@ -28,6 +28,8 @@ public class BombController : MonoBehaviour
             {
                 bomb.SetActive(true);
                 StartCoroutine(Timer());
+                ExplotionHit();
+
             }
         }
     }
@@ -37,7 +39,6 @@ public class BombController : MonoBehaviour
         
         bombsAlive = 0;
         actualTime = 0;
-        ExplotionHit();
         Destroy(bomb);
     }
     void ExplotionHit()
@@ -52,9 +53,17 @@ public class BombController : MonoBehaviour
             if(hit.transform.tag == "Player")
             {
                 transform.position = new Vector3(1, 0.5f, 1);
+                LevelManager.Get().UpdateHealth();
             }
             else if(hit.transform.tag == "Enemy"|| hit.transform.tag == "BrickWall")
             {
+                if(hit.transform.tag == "Enemy")
+                {
+                    LevelManager.Get().UpdateEnemies();
+                    LevelManager.Get().UpdateScore(150);
+                }
+                else
+                    LevelManager.Get().UpdateScore(50);
                 Destroy(hit.transform.gameObject);
             }
         }
