@@ -174,6 +174,7 @@ public class LevelGenerator : MonoBehaviour
                     }
                 }
             } while (x % 2 == 0 && z % 2 == 0 && canSpawn == true);
+            LevelManager.Get().StartEnemies();
             canSpawn = false;
             positionsList.Add(new Vector3(x, 0.5f, z));
             GameObject obj = Instantiate(prefab);
