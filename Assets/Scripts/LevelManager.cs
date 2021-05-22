@@ -36,6 +36,11 @@ public class LevelManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    private void Start()
+    {
+        UIHealth.text = ("Lives: " + lives);
+        UIEnemies.text = ("Left: " + enemiesLeft);
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -50,12 +55,12 @@ public class LevelManager : MonoBehaviour
     public void UpdateEnemies()
     {
         enemiesLeft--;
-        UIEnemies.text = ("ENEMIES LEFT: " + enemiesLeft);
+        UIEnemies.text = ("Left: " + enemiesLeft);
     }
     public void UpdateScore(int SCORE)
     {
         score += SCORE;
-        UIScore.text = ("SCORE: " + score);
+        UIScore.text = ("Score: " + score);
     }
     public void UpdateHealth()
     {
@@ -64,7 +69,7 @@ public class LevelManager : MonoBehaviour
         {
             GameOver();
         }
-        UIHealth.text = ("HEALTH: " + lives);
+        UIHealth.text = ("Lives: " + lives);
     }
     private void SetTimeScale(int scale)
     {
@@ -74,19 +79,6 @@ public class LevelManager : MonoBehaviour
     {
         SetTimeScale(0);
         GameOverMenuUI.SetActive(true);
-        //if (player.GetScore() > GameManager.Get().Highscore)
-        //{
-        //    UIExtras.text = ("HEALTH " + player.GetHealth() + "\n"
-        //        + ("NEW RECORD: " + "\n"
-        //        + ("SCORE: " + player.GetScore())));
-        //}
-        //else
-        //{
-        //    UIExtras.text = ("HEALTH " + player.GetHealth() + "\n" +
-        //        ("SCORE: " + player.GetScore()) +
-        //        ("HIGHSCORE" + GameManager.Get().Highscore));
-        //}
-
     }
     public void SetPause()
     {
