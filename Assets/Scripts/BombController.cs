@@ -4,39 +4,19 @@ using UnityEngine;
 
 public class BombController : MonoBehaviour
 {
-    [SerializeField] GameObject bombPrefab;
-    [SerializeField] float TimeToExplote = 2;
-    int bombsAlive = 0;
+    [SerializeField] float timeToExplote = 2;
+    [SerializeField] float range = 1;
     GameObject bomb;
-    Vector3 bombPos;
-    // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space) && bombsAlive==0)
-        {
-            bomb = Instantiate(bombPrefab);
-            bomb.SetActive(false);
-            bomb.transform.position =new Vector3( Mathf.Round( transform.position.x), transform.position.y, Mathf.Round(transform.position.z));
-            bombPos = bomb.transform.position;
-            bombsAlive++;
-            
-        }
-        if(bombsAlive>0)
-        {
-            if (transform.position.x < bomb.transform.position.x - 1 || transform.position.x > bomb.transform.position.x + 1 || transform.position.z < bomb.transform.position.z - 1 || transform.position.z > bomb.transform.position.z + 1)
-            {
-                bomb.SetActive(true);
-                StartCoroutine(Timer());
-                
 
-            }
-        }
+    private void Start()
+    {
+        bomb = this.gameObject;
+        StartCoroutine(Timer());
     }
     IEnumerator Timer()
     {
-        yield return new WaitForSeconds(TimeToExplote);
+        yield return new WaitForSeconds(timeToExplote);
         
-        bombsAlive = 0;
         ExplotionHit();
         Destroy(bomb);
     }
@@ -44,11 +24,12 @@ public class BombController : MonoBehaviour
     {
         RaycastHit hit;
         
-        if (Physics.Raycast(bombPos, transform.TransformDirection(Vector3.right), out hit, 1) ||
-            Physics.Raycast(bombPos, transform.TransformDirection(Vector3.left), out hit, 1) ||
-            Physics.Raycast(bombPos, transform.TransformDirection(Vector3.forward), out hit, 1) ||
-            Physics.Raycast(bombPos, transform.TransformDirection(Vector3.back), out hit, 1))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out hit, range) ||
+            Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out hit, range) ||
+            Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, range) ||
+            Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), out hit, range))
         {
+                Debug.Log("Hit name: " + hit.transform.gameObject.tag);
             if(hit.transform.tag == "Player")
             {
                 transform.position = new Vector3(1, 0.5f, 1);
@@ -62,10 +43,9 @@ public class BombController : MonoBehaviour
                     LevelManager.Get().UpdateScore(150);
                 }
                 else
-                    LevelManager.Get().UpdateScore(50);
+                    //LevelManager.Get().UpdateScore(50);
                 Destroy(hit.transform.gameObject);
             }
-            bombPos = Vector3.zero;
         }
         
     }
