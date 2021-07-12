@@ -106,3 +106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5af585bb42487f438c3dfbe3632881b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorPrefab: {fileID: 4820413308157527865, guid: da8ac0d3ed77a7c40963284c04a8bb35,
+    type: 3}
+  chanceOfDoorSpawn: 100
