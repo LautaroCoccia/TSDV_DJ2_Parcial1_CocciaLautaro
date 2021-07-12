@@ -23,7 +23,6 @@ public class EnemyController : MonoBehaviour, IHitable
             if(hit.transform.tag == "Player")
             {
                 hit.transform.gameObject.GetComponent<IHitable>().OnHit();
-                //LevelManager.Get().UpdateHealth();
             }
             else
             {
@@ -58,6 +57,7 @@ public class EnemyController : MonoBehaviour, IHitable
     }
     public void OnHit()
     {
+        LevelManager.Get().UpdateEnemies();
         Destroy(gameObject);
     }
 }
