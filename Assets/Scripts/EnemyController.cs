@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, IHitable
 {
     [SerializeField] private  float movementSpeed = 1;
     [SerializeField] private  float timeToTurn = 3;
-
     // Update is called once per frame
     void Update()
     {
@@ -22,7 +21,7 @@ public class EnemyController : MonoBehaviour
         {
             if(hit.transform.tag == "Player")
             {
-                hit.transform.position = new Vector3(1, 0.5f, 1);
+                hit.transform.gameObject.GetComponent<IHitable>().OnHit();
                 //LevelManager.Get().UpdateHealth();
             }
             else
@@ -55,5 +54,9 @@ public class EnemyController : MonoBehaviour
             }
         }
         timeToTurn = 3;
+    }
+    public void OnHit()
+    {
+        Destroy(gameObject);
     }
 }
