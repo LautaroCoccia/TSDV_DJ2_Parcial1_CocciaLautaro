@@ -6,13 +6,14 @@ public class YellowEnemyController : MonoBehaviour
 {
     [SerializeField] private float movementSpeed = 1;
     [SerializeField] private float timeToTurn = 3;
+    [SerializeField] private float actualTimeTurn;
 
     // Update is called once per frame
     void Update()
     {
         if (timeToTurn > 0)
         {
-            timeToTurn -= Time.deltaTime;
+            actualTimeTurn -= Time.deltaTime;
         }
         else
         {
@@ -64,6 +65,6 @@ public class YellowEnemyController : MonoBehaviour
                     Mathf.Round(transform.position.z));
             }
         }
-        timeToTurn = 3;
+        actualTimeTurn = timeToTurn;
     }
 }
