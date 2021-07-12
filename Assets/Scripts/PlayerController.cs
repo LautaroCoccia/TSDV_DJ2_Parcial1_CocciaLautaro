@@ -2,72 +2,66 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, IHitable
+namespace TitosQuest.Framework.BombermanProto
 {
-    [SerializeField] int layerMask = 8;
-    float x;
-    float z;
-    
-    // Update is called once per frame
-    private void Update()
+    public class PlayerController : MonoBehaviour, IHitable
     {
-        x = Input.GetAxis("Horizontal");
-        z = Input.GetAxis("Vertical");
-        x = (x * Time.deltaTime) * 5;
-        z = (z * Time.deltaTime) * 5;
-        CenterPlayer();
-    }
-
-    private void CenterPlayer()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, 0.5f) && z > 0)
+        [SerializeField] private float speed = 15;
+        [SerializeField] private float displacementSpeed = 20;
+        [SerializeField] private float rayDistance = 1;
+        [SerializeField] private LevelManager levelManager;
+        private Vector3 direction;
+        // Update is called once per frame
+        void Update()
         {
-            if (hit.transform.gameObject.layer == layerMask)
-            {
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-                transform.position = new Vector3(transform.position.x, transform.position.y, hit.transform.position.z - 1);
+            float hor = Input.GetAxis("Horizontal");
+            float ver = Input.GetAxis("Vertical");
 
+            if (ver != 0 && hor != 0)
+                ver = 0;
+
+            direction = new Vector3(hor, 0, ver);
+            direction.Normalize();
+            Move(direction);
+        }
+
+        void Move(Vector3 direction) //TODO Extraer esto a otra clase y que este player y un hipotético enemy hereden de esa clase.
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, direction, out hit, rayDistance))
+            {
+                if(hit.transform.tag =="Door")
+                {
+                    hit.transform.gameObject.GetComponent<IHitable>().OnHit();
+                }
+                Debug.DrawRay(transform.position, direction * rayDistance, Color.yellow);
+            }
+            else
+            {
+                transform.Translate(direction * Time.deltaTime * speed, Space.World);
+
+                float x = Mathf.RoundToInt(transform.position.x);
+                float z = Mathf.RoundToInt(transform.position.z);
+
+                if (direction.x != 0)
+                {
+                    Vector3 targetPosition = new Vector3(transform.position.x, transform.position.y, z);
+                    transform.position = Vector3.Lerp(transform.position, targetPosition,
+                        displacementSpeed * Time.deltaTime);
+                }
+
+                if (direction.z != 0)
+                {
+                    Vector3 targetPosition = new Vector3(x, transform.position.y, transform.position.z);
+                    transform.position = Vector3.Lerp(transform.position, targetPosition,
+                        displacementSpeed * Time.deltaTime);
+                }
             }
         }
-        else if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), out hit, 0.5f) && z < 0)
+        public void OnHit()
         {
-            if (hit.transform.gameObject.layer == layerMask)
-            {
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.back) * hit.distance, Color.yellow);
-                transform.position = new Vector3(transform.position.x, transform.position.y, hit.transform.position.z + 1);
-
-            }
+            transform.position = new Vector3(1, 0.5f, 1);
+            levelManager.UpdateHealth();
         }
-        else
-        {
-            transform.Translate(0, 0, z);
-        }
-
-        if (Physics.Raycast(transform.position, transform.right, out hit, 0.5f) && x > 0)
-        {
-            if (hit.transform.gameObject.layer == layerMask)
-            {
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.right) * hit.distance, Color.yellow);
-                transform.position = new Vector3(hit.transform.position.x - 1, transform.position.y, transform.position.z);
-
-            }
-        }
-        else if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out hit, 0.5f) && x < 0)
-        {
-            if (hit.transform.gameObject.layer == layerMask)
-            {
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.back) * hit.distance, Color.yellow);
-                transform.position = new Vector3(hit.transform.position.x + 1, transform.position.y, transform.position.z);
-            }
-        }
-        else
-        {
-            transform.Translate(x, 0, 0);
-        }
-    }
-    public void OnHit()
-    {
-
     }
 }
