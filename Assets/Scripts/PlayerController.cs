@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IHitable
 {
     [SerializeField] int layerMask = 8;
     float x;
@@ -65,5 +65,9 @@ public class PlayerController : MonoBehaviour
         {
             transform.Translate(x, 0, 0);
         }
+    }
+    public void OnHit()
+    {
+
     }
 }
