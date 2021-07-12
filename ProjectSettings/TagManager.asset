@@ -8,6 +8,7 @@ TagManager:
   - Floor
   - Bomb
   - Hitable
+  - Door
   layers:
   - Default
   - TransparentFX
