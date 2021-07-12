@@ -48,22 +48,10 @@ public class BombController : MonoBehaviour
 
     void OnHit(GameObject hit)
     {
-        if (hit.transform.tag == "Player")
+        if (hit.transform.tag == "Hitable" || hit.transform.tag == "Player")
         {
             hit.transform.gameObject.GetComponent<IHitable>().OnHit();
-
-            //LevelManager.Get().UpdateHealth();
-        }
-        else if (hit.transform.tag == "Enemy" || hit.transform.tag == "BrickWall")
-        {
-            if (hit.transform.tag == "Enemy")
-            {
-                //LevelManager.Get().UpdateEnemies();
-                //LevelManager.Get().UpdateScore(150);
-            }
-            else
-                //LevelManager.Get().UpdateScore(50);
-                Destroy(hit.transform.gameObject);
+            Destroy(hit.transform.gameObject);
         }
     }
 }
