@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class DoorController : MonoBehaviour, IHitable
 {
+    //public static Action algo;
     Material material;
     LevelManager levelManager;
     // Start is called before the first frame update
@@ -23,7 +25,7 @@ public class DoorController : MonoBehaviour, IHitable
     {
         if(levelManager.GetIsActiveDoor())
         {
-            Debug.Log("Ganaste");
+            levelManager.GameOver();
         }
     }
 
