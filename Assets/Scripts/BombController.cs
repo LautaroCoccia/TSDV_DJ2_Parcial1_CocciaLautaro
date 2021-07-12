@@ -23,30 +23,46 @@ public class BombController : MonoBehaviour
     void ExplotionHit()
     {
         RaycastHit hit;
-        
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out hit, range) ||
-            Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out hit, range) ||
-            Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, range) ||
-            Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), out hit, range))
+        GameObject obj;
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out hit, range)) 
         {
-                Debug.Log("Hit name: " + hit.transform.gameObject.tag);
-            if(hit.transform.tag == "Player")
-            {
-                transform.position = new Vector3(1, 0.5f, 1);
-                LevelManager.Get().UpdateHealth();
-            }
-            else if(hit.transform.tag == "Enemy"|| hit.transform.tag == "BrickWall")
-            {
-                if(hit.transform.tag == "Enemy")
-                {
-                    LevelManager.Get().UpdateEnemies();
-                    LevelManager.Get().UpdateScore(150);
-                }
-                else
-                    //LevelManager.Get().UpdateScore(50);
-                Destroy(hit.transform.gameObject);
-            }
+            obj = hit.transform.gameObject;
+            OnHit(obj);
         }
-        
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out hit, range))
+        {
+            obj = hit.transform.gameObject;
+            OnHit(obj);
+        }
+        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, range))
+        {
+            obj = hit.transform.gameObject;
+            OnHit(obj);
+        }
+        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), out hit, range))
+        {
+            obj = hit.transform.gameObject;
+            OnHit(obj);
+        }
+    }
+
+    void OnHit(GameObject hit)
+    {
+        if (hit.transform.tag == "Player")
+        {
+            transform.position = new Vector3(1, 0.5f, 1);
+            //LevelManager.Get().UpdateHealth();
+        }
+        else if (hit.transform.tag == "Enemy" || hit.transform.tag == "BrickWall")
+        {
+            if (hit.transform.tag == "Enemy")
+            {
+                //LevelManager.Get().UpdateEnemies();
+                //LevelManager.Get().UpdateScore(150);
+            }
+            else
+                //LevelManager.Get().UpdateScore(50);
+                Destroy(hit.transform.gameObject);
+        }
     }
 }

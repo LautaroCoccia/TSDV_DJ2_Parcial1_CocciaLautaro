@@ -246,16 +246,26 @@ MonoBehaviour:
   levelHeight: 10
   destructibleWallAmount: 5
   floorDistance: 0.5
+  redEnemyAmount: 1
+  yellowEnemyAmount: 1
+  purpleEnemyAmount: 3
   floorPrefab: {fileID: 6191893930031972429, guid: ff684f7cbdf740242ab3692bd82426c5,
     type: 3}
-  exteriorWallVerticalPrefab: {fileID: 6953277699578654879, guid: db4b2cad76d9cd54696e751e6a1f6b46,
+  exteriorWallVerticalPrefab: {fileID: 6953277699578654879, guid: 8728828a97869094f81a245127cac64b,
     type: 3}
-  exteriorWallHorizontalPrefab: {fileID: 6953277699578654879, guid: db4b2cad76d9cd54696e751e6a1f6b46,
+  exteriorWallHorizontalPrefab: {fileID: 6953277699578654879, guid: 8728828a97869094f81a245127cac64b,
     type: 3}
   wallPrefab: {fileID: 6953277699578654879, guid: db4b2cad76d9cd54696e751e6a1f6b46,
     type: 3}
   destructibleWallPrefab: {fileID: 6953277699578654879, guid: 77c3f767c0fb39f4fb94b7fe5bd9541a,
     type: 3}
+  redEnemyPrefab: {fileID: 3523925506415566478, guid: dca8715c010e7e3469acd852a568ca60,
+    type: 3}
+  yellowEnemyPrefab: {fileID: 3523925506415566478, guid: 5fa29b300e8b8ea4c88355b444a6ab4d,
+    type: 3}
+  purpleEnemyPrefab: {fileID: 0}
+  yellowEnemies: 1
+  purpleEnemies: 0
 --- !u!4 &1510788444
 Transform:
   m_ObjectHideFlags: 0
@@ -389,7 +399,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2.5
   displacementSpeed: 1
-  rayDistance: 0.75
+  rayDistance: 0.5
 --- !u!54 &6392059594357363350
 Rigidbody:
   m_ObjectHideFlags: 0

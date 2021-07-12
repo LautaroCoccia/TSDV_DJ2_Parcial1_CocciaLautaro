@@ -8,8 +8,8 @@ namespace TitosQuest.Framework.BombermanProto
     {
         [SerializeField] private float speed = 15;
         [SerializeField] private float displacementSpeed = 20;
-        private Vector3 direction;
         [SerializeField] private float rayDistance = 1;
+        private Vector3 direction;
 
         // Update is called once per frame
         void Update()

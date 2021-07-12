@@ -15,6 +15,12 @@ public class LevelCreator : MonoBehaviour
 	private int destructibleWallAmount = 5;
 	[SerializeField]
 	private float floorDistance = 0.5f;
+	[SerializeField]
+	private int redEnemyAmount = 3;
+	[SerializeField]
+	private int yellowEnemyAmount = 3;
+	[SerializeField]
+	private int purpleEnemyAmount = 3;
 
 	[Header("Prefabs")]
 	[SerializeField]
@@ -27,6 +33,18 @@ public class LevelCreator : MonoBehaviour
 	private GameObject wallPrefab;
 	[SerializeField]
 	private GameObject destructibleWallPrefab;
+	[SerializeField]
+	private GameObject redEnemyPrefab;
+	[SerializeField]
+	private GameObject yellowEnemyPrefab;
+	[SerializeField]
+	private GameObject purpleEnemyPrefab;
+
+	[Header("Opcions")]
+	[SerializeField]
+	private bool yellowEnemies;
+	[SerializeField]
+	private bool purpleEnemies;
 
 	List<int> emptyPositions = new List<int>();
 
@@ -73,15 +91,23 @@ public class LevelCreator : MonoBehaviour
 			}
 		}
 		//build destructible walls
-		for (int i = 0; i < destructibleWallAmount; i++)
-		{
-			int rnd = Random.Range(0, emptyPositions.Count);
-			int arrayPos = emptyPositions[rnd];
-			int x = arrayPos % levelWidth;
-			int y = arrayPos / levelWidth;
-			Instantiate(destructibleWallPrefab, new Vector3(x, floorDistance, y), Quaternion.identity, transform);
-			emptyPositions.RemoveAt(rnd);
-		}
+		Builder(destructibleWallAmount, destructibleWallPrefab);
+		
+		//Spawn RED enemies
+		Builder(redEnemyAmount, redEnemyPrefab);
+		
+		//Spawn YELLOW enemies
+		if(yellowEnemies)
+        {
+			Builder(yellowEnemyAmount, yellowEnemyPrefab);
+        }
+
+		//Spawn PURPLE enemies
+		if(purpleEnemies)
+        {
+			Builder(purpleEnemyAmount, purpleEnemyPrefab);
+        }
+
 	}
 
 	private int lastWidth;
@@ -94,6 +120,19 @@ public class LevelCreator : MonoBehaviour
 			BuildLevel();
 	    }
     }
+
+	void Builder(int amount, GameObject prefab)
+    {
+		for (int i = 0; i < amount; i++)
+		{
+			int rnd = Random.Range(0, emptyPositions.Count);
+			int arrayPos = emptyPositions[rnd];
+			int x = arrayPos % levelWidth;
+			int y = arrayPos / levelWidth;
+			Instantiate(prefab, new Vector3(x, floorDistance, y), Quaternion.identity, transform);
+			emptyPositions.RemoveAt(rnd);
+		}
+	}
 }
 
 //public class UI
