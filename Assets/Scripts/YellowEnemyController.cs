@@ -11,7 +11,7 @@ public class YellowEnemyController : MonoBehaviour, IHitable
     // Update is called once per frame
     void Update()
     {
-        if (timeToTurn > 0)
+        if (actualTimeTurn > 0)
         {
             actualTimeTurn -= Time.deltaTime;
         }
@@ -26,11 +26,7 @@ public class YellowEnemyController : MonoBehaviour, IHitable
         {
             if (hit.transform.tag == "Player" )
             {
-                if(hit.transform.tag == "Player")
-                {
-                    hit.transform.gameObject.GetComponent<IHitable>().OnHit();
-                    //LevelManager.Get().UpdateHealth();
-                }
+                hit.transform.gameObject.GetComponent<IHitable>().OnHit();
             }
             else if (hit.transform.tag == "BrickWall")
             {
