@@ -9,8 +9,8 @@ namespace TitosQuest.Framework.BombermanProto
         [SerializeField] private float speed = 15;
         [SerializeField] private float displacementSpeed = 20;
         [SerializeField] private float rayDistance = 1;
+        [SerializeField] private LevelManager levelManager;
         private Vector3 direction;
-        private int lives = 3;
         // Update is called once per frame
         void Update()
         {
@@ -57,10 +57,7 @@ namespace TitosQuest.Framework.BombermanProto
         public void OnHit()
         {
             transform.position = new Vector3(1, 0.5f, 1);
-            lives--;
-            Debug.Log("Lives: " + lives);
-            if(lives == 0)
-                Debug.Log("Perdiste");
+            levelManager.UpdateHealth();
         }
     }
 }
