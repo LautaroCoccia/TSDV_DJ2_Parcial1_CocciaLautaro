@@ -18,6 +18,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject QuitMenuUI;
     [SerializeField] private GameObject GameOverMenuUI;
 
+    [SerializeField] private bool doorActive = false;
     private static bool pause = false;
     private static LevelManager _instanceLevelManager;
     private const int minLives = 1;
@@ -94,5 +95,13 @@ public class LevelManager : MonoBehaviour
             PauseMenuUI.SetActive(pause);
             QuitMenuUI.SetActive(pause);
         }
+    }
+    public void setActiveDoor()
+    {
+        doorActive = !doorActive;
+    }
+    public bool GetIsActiveDoor()
+    {
+        return doorActive;
     }
 }
