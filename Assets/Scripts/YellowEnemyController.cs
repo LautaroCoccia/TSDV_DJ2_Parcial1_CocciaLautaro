@@ -65,6 +65,7 @@ public class YellowEnemyController : MonoBehaviour, IHitable
     }
     public void OnHit()
     {
+        LevelManager.Get().UpdateEnemies();
         Destroy(gameObject);
     }
 }
