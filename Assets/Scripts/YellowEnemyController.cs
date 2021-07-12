@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class YellowEnemyController : MonoBehaviour
+public class YellowEnemyController : MonoBehaviour, IHitable
 {
     [SerializeField] private float movementSpeed = 1;
     [SerializeField] private float timeToTurn = 3;
@@ -28,7 +28,7 @@ public class YellowEnemyController : MonoBehaviour
             {
                 if(hit.transform.tag == "Player")
                 {
-                    hit.transform.position = new Vector3(1, 0.5f, 1);
+                    hit.transform.gameObject.GetComponent<IHitable>().OnHit();
                     //LevelManager.Get().UpdateHealth();
                 }
             }
@@ -66,5 +66,9 @@ public class YellowEnemyController : MonoBehaviour
             }
         }
         actualTimeTurn = timeToTurn;
+    }
+    public void OnHit()
+    {
+        Destroy(gameObject);
     }
 }
