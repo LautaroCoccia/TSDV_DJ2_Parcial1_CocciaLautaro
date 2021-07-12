@@ -9,10 +9,11 @@ public class BoombInstantilizer : MonoBehaviour
     int bombsAlive = 0;
     GameObject bomb;
 
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        BombController.DestroyBomb += destroyBomb;
     }
 
     // Update is called once per frame
@@ -24,12 +25,13 @@ public class BoombInstantilizer : MonoBehaviour
             bomb.transform.position = new Vector3(Mathf.Round(transform.position.x), transform.position.y, Mathf.Round(transform.position.z));
             bombsAlive++;
         }
-        if (bombsAlive > 0)
-        {
-            if (transform.position.x < bomb.transform.position.x - 1 || transform.position.x > bomb.transform.position.x + 1 || transform.position.z < bomb.transform.position.z - 1 || transform.position.z > bomb.transform.position.z + 1)
-            {
-                bomb.SetActive(true);
-            }
-        }
+    }
+    void destroyBomb()
+    {
+        bombsAlive--;
+    }
+    private void OnDisable()
+    {
+        BombController.DestroyBomb -= destroyBomb;
     }
 }
