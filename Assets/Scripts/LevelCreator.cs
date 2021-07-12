@@ -125,6 +125,10 @@ public class LevelCreator : MonoBehaviour
     {
 		for (int i = 0; i < amount; i++)
 		{
+			if (prefab.transform.tag == "Hitable" && prefab.layer != 9)
+            {
+				LevelManager.Get().StartEnemies();
+            }
 			int rnd = Random.Range(0, emptyPositions.Count);
 			int arrayPos = emptyPositions[rnd];
 			int x = arrayPos % levelWidth;
