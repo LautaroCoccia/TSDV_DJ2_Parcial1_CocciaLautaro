@@ -3,12 +3,13 @@ public class EnemyController : MonoBehaviour, IHitable
 {
     [SerializeField] private  float movementSpeed = 1;
     [SerializeField] private  float timeToTurn = 3;
+    [SerializeField] private  float actualTimeTurn = 0;
     // Update is called once per frame
     void Update()
     {
-        if (timeToTurn > 0)
+        if (actualTimeTurn > 0)
         {
-            timeToTurn -= Time.deltaTime;
+            actualTimeTurn -= Time.deltaTime;
         }
         else
         {
@@ -53,7 +54,7 @@ public class EnemyController : MonoBehaviour, IHitable
                     Mathf.Round(transform.position.z));
             }
         }
-        timeToTurn = 3;
+        actualTimeTurn = timeToTurn;
     }
     public void OnHit()
     {
