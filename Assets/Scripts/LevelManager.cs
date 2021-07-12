@@ -76,7 +76,7 @@ public class LevelManager : MonoBehaviour
     {
         Time.timeScale = scale;
     }
-    private void GameOver()
+    public void GameOver()
     {
         SetTimeScale(0);
         GameOverMenuUI.SetActive(true);
