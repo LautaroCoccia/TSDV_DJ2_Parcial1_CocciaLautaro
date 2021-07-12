@@ -6,9 +6,8 @@ TagManager:
   tags:
   - Wall
   - Floor
-  - BrickWall
-  - Enemy
   - Bomb
+  - Hitable
   layers:
   - Default
   - TransparentFX
