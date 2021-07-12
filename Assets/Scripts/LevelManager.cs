@@ -9,7 +9,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] int lives = 3;
     [SerializeField] int score = 0;
     [SerializeField] int enemiesLeft = 0;
-
+    [SerializeField] int chanceOfDoorSpawn = 100;
     [SerializeField] private TextMeshProUGUI UIScore;
     [SerializeField] private TextMeshProUGUI UIHealth;
     [SerializeField] private TextMeshProUGUI UIEnemies;
@@ -103,5 +103,9 @@ public class LevelManager : MonoBehaviour
     public bool GetIsActiveDoor()
     {
         return doorActive;
+    }
+    public int GetChanceOfDoorSpawn()
+    {
+        return chanceOfDoorSpawn;
     }
 }
