@@ -50,7 +50,8 @@ public class BombController : MonoBehaviour
     {
         if (hit.transform.tag == "Player")
         {
-            transform.position = new Vector3(1, 0.5f, 1);
+            hit.transform.gameObject.GetComponent<IHitable>().OnHit();
+
             //LevelManager.Get().UpdateHealth();
         }
         else if (hit.transform.tag == "Enemy" || hit.transform.tag == "BrickWall")
