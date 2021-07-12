@@ -448,6 +448,7 @@ MonoBehaviour:
   lives: 3
   score: 0
   enemiesLeft: 0
+  chanceOfDoorSpawn: 100
   UIScore: {fileID: 1828387113}
   UIHealth: {fileID: 2529555707987901200}
   UIEnemies: {fileID: 775311310}
@@ -455,7 +456,7 @@ MonoBehaviour:
   PauseMenuUI: {fileID: 2529555708512795700}
   QuitMenuUI: {fileID: 2529555709165613435}
   GameOverMenuUI: {fileID: 2529555709484906035}
-  doorActive: 0
+  doorActive: 1
 --- !u!1001 &1729926710
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -522,6 +523,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LevelCreator
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041623425845741093, guid: 6cfa79712201ce44c91bad80d4b2107d,
+        type: 3}
+      propertyPath: yellowEnemies
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cfa79712201ce44c91bad80d4b2107d, type: 3}
