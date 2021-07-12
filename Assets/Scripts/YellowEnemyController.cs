@@ -28,7 +28,7 @@ public class YellowEnemyController : MonoBehaviour, IHitable
             {
                 hit.transform.gameObject.GetComponent<IHitable>().OnHit();
             }
-            else if (hit.transform.tag == "BrickWall")
+            else if (hit.transform.tag == "Hitable")
             {
                 //NO HACE NADA PERO NO SE ME OCURRIO OTRA FORMA DE IGNORAR LAS PAREDES 
             }
