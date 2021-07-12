@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BrickWallController : MonoBehaviour, IHitable
 {
+    [SerializeField] GameObject doorPrefab ;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +19,11 @@ public class BrickWallController : MonoBehaviour, IHitable
     }
     public void OnHit()
     {
+        if(Random.Range(1, 100) < LevelManager.Get().GetChanceOfDoorSpawn())
+        {
+            GameObject obj = Instantiate(doorPrefab);
+            obj.transform.position = transform.position;
+        }
         Destroy(gameObject);
     }
 }
