@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -3981479558305221013}
   m_Layer: 0
   m_Name: YellowEnemy
-  m_TagString: Enemy
+  m_TagString: Hitable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,3 +109,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 1
   timeToTurn: 3
+  actualTimeTurn: 0
