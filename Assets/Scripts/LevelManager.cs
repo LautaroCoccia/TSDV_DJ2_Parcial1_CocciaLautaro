@@ -9,6 +9,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] int lives = 3;
     [SerializeField] int score = 0;
     [SerializeField] int enemiesLeft = 0;
+    [SerializeField] int brickWallsLeft = 0;
     [SerializeField] int chanceOfDoorSpawn = 100;
     [SerializeField] private TextMeshProUGUI UIScore;
     [SerializeField] private TextMeshProUGUI UIHealth;
@@ -18,10 +19,12 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject QuitMenuUI;
     [SerializeField] private GameObject GameOverMenuUI;
 
+    [SerializeField] private bool doorExists = false;
     [SerializeField] private bool doorActive = false;
     private static bool pause = false;
     private static LevelManager _instanceLevelManager;
     private const int minLives = 1;
+
     public static LevelManager Get()
     {
         return _instanceLevelManager;
@@ -107,5 +110,17 @@ public class LevelManager : MonoBehaviour
     public int GetChanceOfDoorSpawn()
     {
         return chanceOfDoorSpawn;
+    }
+    public void SetBrickWall()
+    {
+        brickWallsLeft++;
+    }
+    public void UpdateBrickWall()
+    {
+        brickWallsLeft--;
+    }
+    public int GetBrickWallLeft()
+    {
+        return brickWallsLeft;
     }
 }
