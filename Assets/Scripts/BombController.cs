@@ -70,12 +70,7 @@ public class BombController : MonoBehaviour
 
     void OnHit(GameObject hit)
     {
-        if (hit.transform.tag == "Hitable" )
-        {
-            hit.transform.gameObject.GetComponent<IHitable>().OnHit();
-            Destroy(hit.transform.gameObject);
-        }
-        else if ( hit.transform.tag == "Player")
+        if (hit.transform.tag == "Hitable" || hit.transform.tag == "Player")
         {
             hit.transform.gameObject.GetComponent<IHitable>().OnHit();
         }
