@@ -30,7 +30,7 @@ namespace TitosQuest.Framework.BombermanProto
             RaycastHit hit;
             if (Physics.Raycast(transform.position, direction, out hit, rayDistance))
             {
-                if(hit.transform.tag =="Door")
+                if(hit.transform.tag =="Door"|| hit.transform.tag == "Item")
                 {
                     hit.transform.gameObject.GetComponent<IHitable>().OnHit();
                 }
