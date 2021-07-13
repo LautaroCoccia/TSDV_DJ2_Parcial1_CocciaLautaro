@@ -348,7 +348,7 @@ PrefabInstance:
     - target: {fileID: 7727873939378852584, guid: 04113a3f46be1fa419a671386b61a2c1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7727873939378852584, guid: 04113a3f46be1fa419a671386b61a2c1,
         type: 3}
@@ -431,7 +431,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1616086868
 MonoBehaviour:
@@ -456,7 +456,7 @@ MonoBehaviour:
   PauseMenuUI: {fileID: 2529555708512795700}
   QuitMenuUI: {fileID: 2529555709165613435}
   GameOverMenuUI: {fileID: 2529555709484906035}
-  doorActive: 1
+  doorActive: 0
 --- !u!1001 &1729926710
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -529,6 +529,11 @@ PrefabInstance:
       propertyPath: yellowEnemies
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2041623425845741093, guid: 6cfa79712201ce44c91bad80d4b2107d,
+        type: 3}
+      propertyPath: destructibleWallAmount
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cfa79712201ce44c91bad80d4b2107d, type: 3}
 --- !u!114 &1828387113 stripped
@@ -598,7 +603,7 @@ PrefabInstance:
     - target: {fileID: 7537015300590572544, guid: 3078b4a696929bd4fbf39eed8388209f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7537015300590572544, guid: 3078b4a696929bd4fbf39eed8388209f,
         type: 3}
