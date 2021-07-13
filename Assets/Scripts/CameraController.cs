@@ -16,9 +16,9 @@ public class CameraController : MonoBehaviour
     void LateUpdate()
     {
         
-        transform.position =new Vector3(player.position.x, player.position.y + offsetPos.y, offsetPos.z);
+        transform.position =new Vector3(player.position.x, offsetPos.y, offsetPos.z);
         transform.rotation = Quaternion.Euler(offsetRotation);
         if(setLookAt)
-            transform.LookAt(player);
+        transform.LookAt(player);
     }
 }

@@ -7,9 +7,9 @@ TagManager:
   - Wall
   - Floor
   - Bomb
-  - Hitable
-  - Door
   - Item
+  - BrickWall
+  - Enemy
   layers:
   - Default
   - TransparentFX

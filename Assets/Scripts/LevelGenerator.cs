@@ -26,6 +26,8 @@ public class LevelGenerator : MonoBehaviour
             Queue<GameObject> objectPool = new Queue<GameObject>();
             if(pool.tag == "Wall")
             {
+                Debug.Log(pool.prefab.name);
+
                 pool.size = (width * height) / 2;
                 WallInitializer(pool.size, pool.prefab);
             }

@@ -129,11 +129,11 @@ public class LevelCreator : MonoBehaviour
     {
 		for (int i = 0; i < amount; i++)
 		{
-			if (prefab.layer != 9)
+			if (prefab.tag == "Enemy")
             {
 				lvlManager.StartEnemies();
             }
-			else if(prefab.layer == 12)
+			else if(prefab.tag == "BrickWall")
             {
 				lvlManager.SetBrickWall();
 			}

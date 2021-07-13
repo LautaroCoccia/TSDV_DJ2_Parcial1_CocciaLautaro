@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -3981479558305221013}
   m_Layer: 12
   m_Name: YellowEnemy
-  m_TagString: Hitable
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

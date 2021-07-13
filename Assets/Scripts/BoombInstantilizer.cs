@@ -12,11 +12,14 @@ public class BoombInstantilizer : MonoBehaviour
     public static UpdateRange updateRange;
     
     GameObject bomb;
-
+    LevelManager lvlManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        lvlManager =LevelManager.Get();
+        lvlManager.SetBombRangeUI(range);
+        lvlManager.SetBombCantUI(maxCant);
         MoreBombs.AddBombs += SetNewMaxBombs;
         MoreRange.AddBombRange += SetNewRange;
         BombController.DestroyBomb += destroyBomb;
@@ -46,9 +49,12 @@ public class BoombInstantilizer : MonoBehaviour
     private void SetNewRange()
     {
         range++;
+        lvlManager.SetBombRangeUI(range);
     }
     void SetNewMaxBombs()
     {
-        maxCant++; 
+        maxCant++;
+        lvlManager.SetBombCantUI(maxCant);
+
     }
 }

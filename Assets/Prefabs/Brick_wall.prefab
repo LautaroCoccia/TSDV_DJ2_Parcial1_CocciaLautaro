@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2646320522516887700}
   m_Layer: 12
   m_Name: Brick_wall
-  m_TagString: Hitable
+  m_TagString: BrickWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
