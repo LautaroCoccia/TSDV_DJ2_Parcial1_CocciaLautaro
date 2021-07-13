@@ -107,4 +107,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToExplote: 2
-  range: 2
+  range: 1
