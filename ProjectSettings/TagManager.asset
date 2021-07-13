@@ -9,6 +9,7 @@ TagManager:
   - Bomb
   - Hitable
   - Door
+  - Item
   layers:
   - Default
   - TransparentFX
