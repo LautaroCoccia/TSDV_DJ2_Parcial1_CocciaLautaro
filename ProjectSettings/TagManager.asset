@@ -22,11 +22,11 @@ TagManager:
   - Wall
   - BrickWall
   - LimitWall
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Hitable
+  - Door
+  - Item
+  - Bomb
   - 
   - 
   - 
