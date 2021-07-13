@@ -21,6 +21,7 @@ public class LevelCreator : MonoBehaviour
 	private int yellowEnemyAmount = 3;
 	[SerializeField]
 	private int purpleEnemyAmount = 3;
+	
 
 	[Header("Prefabs")]
 	[SerializeField]
@@ -39,7 +40,9 @@ public class LevelCreator : MonoBehaviour
 	private GameObject yellowEnemyPrefab;
 	[SerializeField]
 	private GameObject purpleEnemyPrefab;
-
+	[SerializeField] 
+	private List<GameObject> itemList;
+	
 	[Header("Opcions")]
 	[SerializeField]
 	private bool yellowEnemies;
@@ -47,9 +50,10 @@ public class LevelCreator : MonoBehaviour
 	private bool purpleEnemies;
 
 	List<int> emptyPositions = new List<int>();
-
+	LevelManager lvlManager;
 	void Start()
 	{
+		lvlManager = LevelManager.Get();
 		BuildLevel();
 	}
 
@@ -125,10 +129,14 @@ public class LevelCreator : MonoBehaviour
     {
 		for (int i = 0; i < amount; i++)
 		{
-			if (prefab.transform.tag == "Hitable" && prefab.layer != 9)
+			if (prefab.layer != 9)
             {
-				LevelManager.Get().StartEnemies();
+				lvlManager.StartEnemies();
             }
+			else if(prefab.layer == 12)
+            {
+				lvlManager.SetBrickWall();
+			}
 			int rnd = Random.Range(0, emptyPositions.Count);
 			int arrayPos = emptyPositions[rnd];
 			int x = arrayPos % levelWidth;
@@ -136,6 +144,11 @@ public class LevelCreator : MonoBehaviour
 			Instantiate(prefab, new Vector3(x, floorDistance, y), Quaternion.identity, transform);
 			emptyPositions.RemoveAt(rnd);
 		}
+	}
+	public List<GameObject> GetItemList()
+    {
+		return itemList;
+
 	}
 }
 

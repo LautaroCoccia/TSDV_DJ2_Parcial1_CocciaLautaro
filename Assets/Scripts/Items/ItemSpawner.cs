@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemSpawner : MonoBehaviour
+public abstract class ItemSpawner : MonoBehaviour
 {
-    [SerializeField] List<GameObject> itemList;
-    [SerializeField] int chanceToSpawnItem = 50;
-
-    private void OnDestroy()
+    LevelManager lvlManager;
+    private void Start()
     {
-        if(Random.Range(0,101)<chanceToSpawnItem)
+        lvlManager = LevelManager.Get();
+    }
+    public virtual void SpawnItem()
+    {
+        if(Random.Range(0,101)< lvlManager.GetChanceToSpawnItem())
         {
-            GameObject obj = Instantiate(itemList[Random.Range(0, itemList.Count)]);
+            GameObject obj = Instantiate(lvlManager.GetItemList()[Random.Range(0, lvlManager.GetItemList().Count)]);
             obj.transform.position = transform.position;
         }
     }

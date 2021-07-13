@@ -11,6 +11,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] int enemiesLeft = 0;
     [SerializeField] int brickWallsLeft = 0;
     [SerializeField] int chanceOfDoorSpawn = 100;
+    [SerializeField] List<GameObject> itemList;
+    [SerializeField] int chanceToSpawnItem = 50;
     [SerializeField] private TextMeshProUGUI UIScore;
     [SerializeField] private TextMeshProUGUI UIHealth;
     [SerializeField] private TextMeshProUGUI UIEnemies;
@@ -143,5 +145,13 @@ public class LevelManager : MonoBehaviour
     {
         lives++;
         UpdateLivesUI();
+    }
+    public List<GameObject> GetItemList()
+    {
+        return itemList;
+    }
+    public int GetChanceToSpawnItem()
+    {
+        return chanceToSpawnItem;
     }
 }

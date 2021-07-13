@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class YellowEnemyController : ItemSpawner, IHitable
+public class PurpleEnemyController : ItemSpawner, IHitable
 {
     [SerializeField] private float movementSpeed = 1;
     [SerializeField] private float timeToTurn = 3;
-    [SerializeField] private float actualTimeTurn;
+    [SerializeField] private float actualTimeTurn = 0;
+    [SerializeField] private float timeToShoot = 4;
+    [SerializeField] private float actualTimeShoot = 0;
 
+    [SerializeField] GameObject bombBallPrefab;
     // Update is called once per frame
     void Update()
     {
@@ -19,20 +22,23 @@ public class YellowEnemyController : ItemSpawner, IHitable
         {
             RaycastTurn();
         }
-
+        if (actualTimeShoot > 0)
+        {
+            actualTimeShoot -= Time.deltaTime;
+        }
+        else
+        {
+            CastShoot();
+        }
         transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, 0.5f))
         {
-            if (hit.transform.gameObject.layer == 11 )
+            if (hit.transform.gameObject.layer == 11)
             {
                 hit.transform.gameObject.GetComponent<IHitable>().OnHit();
             }
-            else if(hit.transform.gameObject.layer == 12)
-            {
-                //Sigue derecho
-            }
-            else 
+            else
             {
                 transform.Rotate(0, 180, 0);
             }
@@ -63,10 +69,17 @@ public class YellowEnemyController : ItemSpawner, IHitable
         }
         actualTimeTurn = timeToTurn;
     }
+    void CastShoot()
+    {
+        GameObject obj = Instantiate(bombBallPrefab);
+        obj.transform.position = transform.position;
+        obj.transform.rotation = transform.rotation;
+        actualTimeShoot = timeToShoot;
+    }
     public void OnHit()
     {
-        LevelManager.Get().UpdateEnemies();
         SpawnItem();
+        LevelManager.Get().UpdateEnemies();
         Destroy(gameObject);
     }
     public override void SpawnItem()

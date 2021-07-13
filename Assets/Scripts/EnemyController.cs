@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-public class EnemyController : MonoBehaviour, IHitable
+public class EnemyController : ItemSpawner, IHitable 
 {
     [SerializeField] private  float movementSpeed = 1;
     [SerializeField] private  float timeToTurn = 3;
@@ -20,7 +20,7 @@ public class EnemyController : MonoBehaviour, IHitable
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, 0.5f))
         {
-            if(hit.transform.tag == "Player")
+            if(hit.transform.gameObject.layer == 11)
             {
                 hit.transform.gameObject.GetComponent<IHitable>().OnHit();
             }
@@ -57,7 +57,12 @@ public class EnemyController : MonoBehaviour, IHitable
     }
     public void OnHit()
     {
+        SpawnItem();
         LevelManager.Get().UpdateEnemies();
         Destroy(gameObject);
+    }
+    public override void SpawnItem()
+    {
+        base.SpawnItem();
     }
 }

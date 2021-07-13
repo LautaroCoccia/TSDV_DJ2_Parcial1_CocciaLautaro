@@ -19,8 +19,9 @@ public class BrickWallController : MonoBehaviour, IHitable
     }
     public void OnHit()
     {
-        if(!levelManager.GetDoorExists())
-        {
+        levelManager.UpdateBrickWall();
+        if (!levelManager.GetDoorExists())
+        {         
             if (Random.Range(1, 100) < levelManager.GetChanceOfDoorSpawn() || levelManager.GetBrickWallLeft() == 0)
             {
                 GameObject obj = Instantiate(doorPrefab);

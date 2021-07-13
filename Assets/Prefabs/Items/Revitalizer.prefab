@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4776277521455202854}
   - component: {fileID: 4776277521455202853}
   - component: {fileID: 8519322637820104177}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Revitalizer
   m_TagString: Item
   m_Icon: {fileID: 0}

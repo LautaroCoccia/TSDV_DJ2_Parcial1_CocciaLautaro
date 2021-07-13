@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8906577178686888037}
   - component: {fileID: 8906577178686888036}
   - component: {fileID: 8906577178686888032}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: MoreRange
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -106,6 +106,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae5c90fbc39433e41a33dabce402f81a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bombPrefab: {fileID: 5928575042721452454, guid: 348e56c7499db904b8566fd9acf77e74,
-    type: 3}
-  BC: {fileID: -124580800376050734, guid: 348e56c7499db904b8566fd9acf77e74, type: 3}

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7727873939378852580}
   - component: {fileID: 7727873939378852583}
   - component: {fileID: 7727873939378852581}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -144,3 +144,4 @@ MonoBehaviour:
   bombPrefab: {fileID: 5928575042721452454, guid: 348e56c7499db904b8566fd9acf77e74,
     type: 3}
   maxCant: 1
+  range: 1

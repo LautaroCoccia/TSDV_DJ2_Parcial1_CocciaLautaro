@@ -74,7 +74,7 @@ public class BombController : MonoBehaviour
 
     void OnHit(GameObject hit)
     {
-        if (hit.transform.tag == "Hitable" || hit.transform.tag == "Player")
+        if (hit.transform.gameObject.layer == 12 || hit.transform.gameObject.layer == 11)
         {
             hit.transform.gameObject.GetComponent<IHitable>().OnHit();
         }

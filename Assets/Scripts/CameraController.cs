@@ -5,15 +5,20 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private Transform player;
-    Vector3 offset;
+    [SerializeField] Vector3 offsetPos;
+    [SerializeField] Vector3 offsetRotation;
+    [SerializeField] bool setLookAt = false;
     private void Start()
     {
-        offset = transform.position;
+        offsetPos = transform.position;
     }
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.position =new Vector3(player.position.x, player.position.y + offset.y, offset.z);
-        transform.LookAt(player);
+        
+        transform.position =new Vector3(player.position.x, player.position.y + offsetPos.y, offsetPos.z);
+        transform.rotation = Quaternion.Euler(offsetRotation);
+        if(setLookAt)
+            transform.LookAt(player);
     }
 }
