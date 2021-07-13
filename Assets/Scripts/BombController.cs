@@ -5,7 +5,7 @@ using System;
 public class BombController : MonoBehaviour
 {
     [SerializeField] float timeToExplote = 2;
-    [SerializeField] float range = 1;
+    [SerializeField]  float range = 1;
     GameObject bomb;
     public static Action DestroyBomb;
 
@@ -13,6 +13,10 @@ public class BombController : MonoBehaviour
     {
         bomb = this.gameObject;
         StartCoroutine(Timer());
+    }
+    private void OnEnable()
+    {
+        BoombInstantilizer.updateRange += SetNewRange;
     }
     IEnumerator Timer()
     {
@@ -74,5 +78,13 @@ public class BombController : MonoBehaviour
         {
             hit.transform.gameObject.GetComponent<IHitable>().OnHit();
         }
+    }
+    void SetNewRange(ref int newRange)
+    {
+        range = newRange;
+    }
+    private void OnDisable()
+    {
+        BoombInstantilizer.updateRange -= SetNewRange;
     }
 }

@@ -6,13 +6,18 @@ public class BoombInstantilizer : MonoBehaviour
 {
     [SerializeField] GameObject bombPrefab;
     [SerializeField] int maxCant = 1;
-    int bombsAlive = 0;
+    [SerializeField] int range = 1;
+    int bombsAlive = 0; 
+    public delegate void UpdateRange(ref int newRange);
+    public static UpdateRange updateRange;
+    
     GameObject bomb;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        MoreRange.AddBombRange += SetNewRange;
         BombController.DestroyBomb += destroyBomb;
     }
 
@@ -23,6 +28,7 @@ public class BoombInstantilizer : MonoBehaviour
         {
             bomb = Instantiate(bombPrefab);
             bomb.transform.position = new Vector3(Mathf.Round(transform.position.x), transform.position.y, Mathf.Round(transform.position.z));
+            updateRange?.Invoke(ref range);
             bombsAlive++;
         }
     }
@@ -32,6 +38,12 @@ public class BoombInstantilizer : MonoBehaviour
     }
     private void OnDisable()
     {
+        MoreRange.AddBombRange -= SetNewRange;
         BombController.DestroyBomb -= destroyBomb;
     }
+    public void SetNewRange()
+    {
+        range++;
+    }
+    
 }
