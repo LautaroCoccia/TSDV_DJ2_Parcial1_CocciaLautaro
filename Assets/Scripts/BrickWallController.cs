@@ -19,12 +19,17 @@ public class BrickWallController : MonoBehaviour, IHitable
     }
     public void OnHit()
     {
-        if()
-        if(Random.Range(1, 100) < levelManager.GetChanceOfDoorSpawn() || levelManager.GetBrickWallLeft()<=1)
+        if(!levelManager.GetDoorExists())
         {
-            GameObject obj = Instantiate(doorPrefab);
-            obj.transform.position = transform.position;
+            if (Random.Range(1, 100) < levelManager.GetChanceOfDoorSpawn() || levelManager.GetBrickWallLeft() <= 1)
+            {
+                GameObject obj = Instantiate(doorPrefab);
+                obj.transform.position = transform.position;
+                levelManager.setDoorExists();
+                levelManager.setActiveDoor();
+            }
         }
+        
         Destroy(gameObject);
     }
 }
