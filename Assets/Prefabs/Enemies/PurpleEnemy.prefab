@@ -129,5 +129,6 @@ MonoBehaviour:
   actualTimeTurn: 0
   timeToShoot: 4
   actualTimeShoot: 0
+  score: 100
   bombBallPrefab: {fileID: 4934942736816985889, guid: d7d6a2074053eed4d829e6fb5d54ebc3,
     type: 3}

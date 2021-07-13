@@ -7,6 +7,7 @@ public class YellowEnemyController : ItemSpawner, IHitable
     [SerializeField] private float movementSpeed = 1;
     [SerializeField] private float timeToTurn = 3;
     [SerializeField] private float actualTimeTurn;
+    [SerializeField] private int score;
 
     // Update is called once per frame
     void Update()
@@ -66,6 +67,7 @@ public class YellowEnemyController : ItemSpawner, IHitable
     public void OnHit()
     {
         LevelManager.Get().UpdateEnemies();
+        LevelManager.Get().UpdateScore(score);
         SpawnItem();
         Destroy(gameObject);
     }

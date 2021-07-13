@@ -43,8 +43,8 @@ public class BoombInstantilizer : MonoBehaviour
     private void OnDisable()
     {
         MoreRange.AddBombRange -= SetNewRange;
-        BombController.DestroyBomb -= destroyBomb;
         MoreBombs.AddBombs -= SetNewMaxBombs;
+        BombController.DestroyBomb -= destroyBomb;
     }
     private void SetNewRange()
     {

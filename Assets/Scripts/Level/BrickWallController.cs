@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BrickWallController : MonoBehaviour, IHitable
 {
+    [SerializeField] int score;
     [SerializeField] GameObject doorPrefab ;
     LevelManager levelManager;
     // Start is called before the first frame update
@@ -19,6 +20,7 @@ public class BrickWallController : MonoBehaviour, IHitable
     }
     public void OnHit()
     {
+        levelManager.UpdateScore(score);
         levelManager.UpdateBrickWall();
         if (!levelManager.GetDoorExists())
         {         

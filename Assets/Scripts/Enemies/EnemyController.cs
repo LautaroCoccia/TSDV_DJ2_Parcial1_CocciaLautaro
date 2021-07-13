@@ -4,6 +4,7 @@ public class EnemyController : ItemSpawner, IHitable
     [SerializeField] private  float movementSpeed = 1;
     [SerializeField] private  float timeToTurn = 3;
     [SerializeField] private  float actualTimeTurn = 0;
+    [SerializeField] private  int score = 0;
     // Update is called once per frame
     void Update()
     {
@@ -59,6 +60,7 @@ public class EnemyController : ItemSpawner, IHitable
     {
         SpawnItem();
         LevelManager.Get().UpdateEnemies();
+        LevelManager.Get().UpdateScore(score);
         Destroy(gameObject);
     }
     public override void SpawnItem()

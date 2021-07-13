@@ -110,3 +110,4 @@ MonoBehaviour:
   movementSpeed: 1
   timeToTurn: 3
   actualTimeTurn: 0
+  score: 75

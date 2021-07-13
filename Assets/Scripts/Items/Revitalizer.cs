@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Revitalizer : MonoBehaviour, IHitable
 {
+
     public void OnHit()
     {
         LevelManager.Get().OneLiveUp();

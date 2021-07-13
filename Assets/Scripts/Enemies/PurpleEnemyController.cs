@@ -9,6 +9,7 @@ public class PurpleEnemyController : ItemSpawner, IHitable
     [SerializeField] private float actualTimeTurn = 0;
     [SerializeField] private float timeToShoot = 4;
     [SerializeField] private float actualTimeShoot = 0;
+    [SerializeField] private int score = 0;
 
     [SerializeField] GameObject bombBallPrefab;
     // Update is called once per frame
@@ -80,6 +81,7 @@ public class PurpleEnemyController : ItemSpawner, IHitable
     {
         SpawnItem();
         LevelManager.Get().UpdateEnemies();
+        LevelManager.Get().UpdateScore(score);
         Destroy(gameObject);
     }
     public override void SpawnItem()
