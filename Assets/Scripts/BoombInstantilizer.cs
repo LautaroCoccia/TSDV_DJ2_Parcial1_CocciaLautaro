@@ -17,6 +17,7 @@ public class BoombInstantilizer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        MoreBombs.AddBombs += SetNewMaxBombs;
         MoreRange.AddBombRange += SetNewRange;
         BombController.DestroyBomb += destroyBomb;
     }
@@ -40,10 +41,14 @@ public class BoombInstantilizer : MonoBehaviour
     {
         MoreRange.AddBombRange -= SetNewRange;
         BombController.DestroyBomb -= destroyBomb;
+        MoreBombs.AddBombs -= SetNewMaxBombs;
     }
-    public void SetNewRange()
+    private void SetNewRange()
     {
         range++;
     }
-    
+    void SetNewMaxBombs()
+    {
+        maxCant++; 
+    }
 }
