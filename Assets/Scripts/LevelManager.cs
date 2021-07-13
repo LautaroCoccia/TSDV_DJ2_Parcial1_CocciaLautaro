@@ -77,6 +77,10 @@ public class LevelManager : MonoBehaviour
         {
             GameOver();
         }
+        UpdateLivesUI();
+    }
+    private void UpdateLivesUI()
+    {
         UIHealth.text = ("Lives: " + lives);
     }
     private void SetTimeScale(int scale)
@@ -134,5 +138,10 @@ public class LevelManager : MonoBehaviour
     public int GetBrickWallLeft()
     {
         return brickWallsLeft;
+    }
+    public void OneLiveUp()
+    {
+        lives++;
+        UpdateLivesUI();
     }
 }
