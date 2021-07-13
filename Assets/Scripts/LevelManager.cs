@@ -107,6 +107,14 @@ public class LevelManager : MonoBehaviour
     {
         return doorActive;
     }
+    public void setDoorExists()
+    {
+        doorExists = !doorExists;
+    }
+    public bool GetDoorExists()
+    {
+        return doorExists;
+    }
     public int GetChanceOfDoorSpawn()
     {
         return chanceOfDoorSpawn;
