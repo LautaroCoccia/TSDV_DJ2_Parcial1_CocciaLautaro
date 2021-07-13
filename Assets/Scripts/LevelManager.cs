@@ -59,6 +59,10 @@ public class LevelManager : MonoBehaviour
     public void UpdateEnemies()
     {
         enemiesLeft--;
+        if(enemiesLeft == 0)
+        {
+            doorActive = true;
+        }
         UIEnemies.text = ("Left: " + enemiesLeft);
     }
     public void UpdateScore(int SCORE)
